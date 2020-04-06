@@ -5,16 +5,18 @@ import java.util.ArrayList;
 public class Divida {
 	private double total;
 	private String credor;
-	private Cnpj cnpjCredor = new Cnpj();
+	private Documento documentoCredor;
+
 	private Pagamentos pagamentos = new Pagamentos();
 	
-	public Cnpj getCnpjCredor() {
-		return cnpjCredor;
+	public Documento getDocumentoCredor() {
+		return documentoCredor;
 	}
-	public Pagamentos getPagamentos() {
-		return pagamentos;
+
+	public void setDocumentoCredor(Documento documentoCredor) {
+		this.documentoCredor = documentoCredor;
 	}
-	
+
 	public double getTotal() {
 		return total;
 	}
@@ -27,6 +29,15 @@ public class Divida {
 	}
 	public void setCredor(String credor) {
 		this.credor = credor;
+	}
+
+
+	public void registra(Pagamento pagamento) {
+		pagamentos.registra(pagamento);
+	}
+
+	public double getValorPago() {
+		return pagamentos.getValorPago();
 	}
 	
 	

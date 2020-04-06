@@ -1,30 +1,28 @@
 package br.com.gft.sistemafinanceiro;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class BalancoEmpresa {
 	
-	private HashMap<String, Divida> dividas = new HashMap<String, Divida>(); //com esse mapa conseguimos guardar a divida de acordo com o cnpj do credo
+	private BancoDeDados bd;
 	
-	public void registraDividas(String credor, String cnpjCredor, double valor) {
-		Divida divida = new Divida();
-		divida.setCredor(credor);
-		divida.getCnpjCredor().setValor(cnpjCredor);
-		divida.setTotal(valor);
+	public BalancoEmpresa(BancoDeDados bd) {
+		this.bd=bd;
 		
-		dividas.put(cnpjCredor, divida);
 	}
 	
-	public void pagaDivida(String cnpjCredor, double valor, String nomePagador, String cnpjPagador) {
-		Divida divida = dividas.get(cnpjCredor);
+	public void registraDividas(Divida divida) {
+		bd.salva(divida);
+	}
+	
+	public void pagaDivida(Documento documentoCredor, Pagamento pagamento) {
+		Divida divida = bd.carrega(documentoCredor);
 		if (divida != null) {
-			Pagamento pagamento = new Pagamento();
-			pagamento.setCnpjPagador(cnpjPagador);
-			pagamento.setPagador(nomePagador);
-			pagamento.setValor(valor);
-			divida.getPagamentos().registra(pagamento);
+			divida.registra(pagamento);
 		}
-		
+		registraDividas(divida);
 	}
+	
 
 }

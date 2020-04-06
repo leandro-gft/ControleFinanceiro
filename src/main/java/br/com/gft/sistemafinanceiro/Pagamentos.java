@@ -2,8 +2,9 @@ package br.com.gft.sistemafinanceiro;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 
-public class Pagamentos {
+public class Pagamentos implements Iterable<Pagamento> {
 	
 	private static final long serialVersionUID = 9212342401154414274L;
 	
@@ -62,6 +63,10 @@ public class Pagamentos {
 	
 	public boolean foiRealizado(Pagamento pagamento) {
 		return pagamentos.contains(pagamento);
+	}
+
+	public Iterator<Pagamento> iterator() {
+		return pagamentos.iterator();
 	}
 	
 
