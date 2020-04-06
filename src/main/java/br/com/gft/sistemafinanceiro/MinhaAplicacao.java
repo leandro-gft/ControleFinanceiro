@@ -6,11 +6,12 @@ import java.util.Locale;
 public class MinhaAplicacao {
 
 	public static void main(String[] args) {
-		BancoDeDados bd = new BancoDeDados("localhost", "root", "root");
+		//BancoDeDados bd = new BancoDeDados("localhost", "root", "root");
+		Arquivo bd = new Arquivo();
 		BalancoEmpresa balanco = new BalancoEmpresa(bd);
 		registraDividas(balanco);
 		realizaPagamentos(balanco);
-		bd.desconecta();
+	//	bd.desconecta();
 
 	}
 	

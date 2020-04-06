@@ -3,7 +3,7 @@ package br.com.gft.sistemafinanceiro;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BancoDeDados {
+public class BancoDeDados implements ArmazenadorDeDivida {
 
 	private Map<Documento, Divida> dividasNoBanco = new HashMap<Documento, Divida>(); //com esse mapa conseguimos guardar a divida de acordo com o documento do credor
 
@@ -11,7 +11,7 @@ public class BancoDeDados {
 		System.out.println("Conectado");
 	}
 	
-	public void salva(Divida divida) {
+	public void salvar(Divida divida) {
 		dividasNoBanco.put(divida.getDocumentoCredor(), divida);
 	}
 	
@@ -22,6 +22,8 @@ public class BancoDeDados {
 	public void desconecta() {
 		System.out.println("Desconectado");
 	}
+
+	
 	
 }
 

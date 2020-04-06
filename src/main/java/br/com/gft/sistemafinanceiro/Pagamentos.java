@@ -34,7 +34,7 @@ public class Pagamentos implements Iterable<Pagamento> {
 	public ArrayList<Pagamento> pagamentosDo(String cnpjPagador){
 		ArrayList<Pagamento> pagamentosFiltrados = new ArrayList<Pagamento>();
 		for (Pagamento pagamento: this.pagamentos) {
-			if(pagamento.getCnpjPagador().equals(cnpjPagador)) {
+			if(pagamento.getDocumentoPagador().equals(cnpjPagador)) {
 				pagamentosFiltrados.add(pagamento);
 			}
 		}

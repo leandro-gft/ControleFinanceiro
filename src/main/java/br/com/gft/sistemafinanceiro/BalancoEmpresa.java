@@ -1,23 +1,20 @@
 package br.com.gft.sistemafinanceiro;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class BalancoEmpresa {
 	
-	private BancoDeDados bd;
+	private ArmazenadorDeDivida dividas;
 	
-	public BalancoEmpresa(BancoDeDados bd) {
-		this.bd=bd;
+	public BalancoEmpresa(ArmazenadorDeDivida dividas) {
+		this.dividas=dividas;
 		
 	}
 	
 	public void registraDividas(Divida divida) {
-		bd.salva(divida);
+		dividas.salvar(divida);
 	}
 	
 	public void pagaDivida(Documento documentoCredor, Pagamento pagamento) {
-		Divida divida = bd.carrega(documentoCredor);
+		Divida divida = dividas.carrega(documentoCredor);
 		if (divida != null) {
 			divida.registra(pagamento);
 		}
