@@ -4,11 +4,14 @@ import java.util.ArrayList;
 
 public class Divida {
 	private double total;
-	private double valorPago;
 	private String credor;
-	private String cnpjCredor;
-	private ArrayList<Pagamento> pagamentos = new ArrayList<Pagamento>();
-	public ArrayList<Pagamento> getPagamentos() {
+	private Cnpj cnpjCredor = new Cnpj();
+	private Pagamentos pagamentos = new Pagamentos();
+	
+	public Cnpj getCnpjCredor() {
+		return cnpjCredor;
+	}
+	public Pagamentos getPagamentos() {
 		return pagamentos;
 	}
 	
@@ -18,39 +21,14 @@ public class Divida {
 	public void setTotal(double total) {
 		this.total = total;
 	}
-	public double getValorPago() {
-		return valorPago;
-	}
-	public void setValorPago(double valorPago) {
-		this.valorPago = valorPago;
-	}
+
 	public String getCredor() {
 		return credor;
 	}
 	public void setCredor(String credor) {
 		this.credor = credor;
 	}
-	public String getCnpjCredor() {
-		return cnpjCredor;
-	}
-	public void setCnpjCredor(String cnpjCredor) {
-		this.cnpjCredor = cnpjCredor;
-	}
 	
-	private void paga(double valor) {
-		if (valor < 0) {
-			throw new IllegalArgumentException("Valor invalido para pagamento");
-		}
-		if (valor > 100) {
-			valor -= 8;
-		}
-		this.valorPago += valor;
-	}
 	
-	public void registra(Pagamento pagamento) {
-		this.pagamentos.add(pagamento);
-		this.paga(pagamento.getValor());
-		
-	}
 
 }

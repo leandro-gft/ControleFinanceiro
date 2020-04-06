@@ -9,7 +9,7 @@ public class BalancoEmpresa {
 	public void registraDividas(String credor, String cnpjCredor, double valor) {
 		Divida divida = new Divida();
 		divida.setCredor(credor);
-		divida.setCnpjCredor(cnpjCredor);
+		divida.getCnpjCredor().setValor(cnpjCredor);
 		divida.setTotal(valor);
 		
 		dividas.put(cnpjCredor, divida);
@@ -22,7 +22,7 @@ public class BalancoEmpresa {
 			pagamento.setCnpjPagador(cnpjPagador);
 			pagamento.setPagador(nomePagador);
 			pagamento.setValor(valor);
-			divida.registra(pagamento);
+			divida.getPagamentos().registra(pagamento);
 		}
 		
 	}

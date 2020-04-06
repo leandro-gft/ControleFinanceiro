@@ -1,10 +1,14 @@
 package br.com.gft.sistemafinanceiro;
 
+import java.util.Calendar;
+
 public class Pagamento {
 	
 	private String pagador;
 	private String cnpjPagador;
 	private double valor;
+	private Calendar data;
+
 	public String getPagador() {
 		return pagador;
 	}
@@ -24,5 +28,11 @@ public class Pagamento {
 		this.valor = valor;
 	}
 	
+	public Calendar getData() {
+		return data;
+	}
+	public void setData(Calendar data) {
+		this.data = data;
+	}
 
 }
